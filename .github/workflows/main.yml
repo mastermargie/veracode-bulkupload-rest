@@ -2,10 +2,12 @@ name: Push to DockerHub
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - 'main'
   workflow_dispatch:
-    tags:
-      description: 'Testing Tags'
+    inputs:
+      tags:
+        description: 'Testing Tags'
 
 jobs:
   build:
