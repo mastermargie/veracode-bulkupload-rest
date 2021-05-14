@@ -1,4 +1,4 @@
-FROM python:3.9.5-windowsservercore-1809
+FROM python:3.9.5-windowsservercore
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
