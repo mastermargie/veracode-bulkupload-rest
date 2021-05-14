@@ -40,6 +40,7 @@ jobs:
         name: Docker Push
         run: |
           docker build --rm -t matthewmargelony/veracode-bulkupload-rest:latest .
+          docker push matthewmargelony/veracode-bulkupload-rest:latest
       -
         name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}          
