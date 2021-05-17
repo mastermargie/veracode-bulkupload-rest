@@ -1,0 +1,46 @@
+name: Push to DockerHub
+
+on:
+  push:
+    branches:
+      - 'main'
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Testing Tags'
+
+jobs:
+  docker-push:
+    runs-on: windows-2019
+    steps:
+      -
+        name: Checkout Code
+        uses: actions/checkout@v2
+#      -
+#        name: Set up QEMU
+#        uses: docker/setup-qemu-action@v1
+#      -
+#        name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v1
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+#      -
+#        name: Docker Push
+#        uses: docker/build-push-action@v2
+#        with:
+#          context: .
+#          file: ./Dockerfile
+#          push: true
+#          tags: matthewmargelony/veracode-bulkupload-rest:latest
+      -
+        name: Docker Push
+        run: |
+          docker build --rm -t matthewmargelony/veracode-bulkupload-rest:latest .
+          docker push matthewmargelony/veracode-bulkupload-rest:latest
+      -
+        name: Image digest
+        run: echo ${{ steps.docker_build.outputs.digest }}          
