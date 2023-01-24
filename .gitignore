@@ -50,7 +50,12 @@ coverage.xml
 *.py,cover
 .hypothesis/
 .pytest_cache/
-test/
+veracode_api_py/
+veracode_bulkupload_rest/test/
+test*
+
+# Work in-progress
+veracode_bulkupload_rest/identity.py
 
 # Translations
 *.mo

@@ -1,1 +1,1 @@
-veracode-api-py
+veracode-api-py>=0.9.35
